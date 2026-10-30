@@ -1,0 +1,8 @@
+lab5-control-plane | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+lab5-worker | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}

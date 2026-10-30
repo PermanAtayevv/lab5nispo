@@ -1,0 +1,7 @@
+@all:
+  |--@ungrouped:
+  |--@k8s:
+  |  |--@control_plane:
+  |  |  |--lab5-control-plane
+  |  |--@workers:
+  |  |  |--lab5-worker

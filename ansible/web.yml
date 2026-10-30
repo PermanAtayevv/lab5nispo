@@ -1,0 +1,67 @@
+---
+- name: Configure web service on workers
+  hosts: workers
+  gather_facts: false
+
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Configure lab web endpoint
+      ansible.builtin.copy:
+        dest: /etc/nginx/conf.d/lab5.conf
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          server {
+              listen 127.0.0.1:8088;
+              server_name localhost;
+              location / {
+                  default_type text/plain;
+                  return 200 "Lab5 group13 - {{ inventory_hostname }}\n";
+              }
+          }
+      notify: Restart nginx
+
+    - name: Validate nginx configuration
+      ansible.builtin.command: nginx -t
+      changed_when: false
+
+    - name: Ensure nginx is running
+      ansible.builtin.systemd_service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Apply pending handlers before HTTP check
+      ansible.builtin.meta: flush_handlers
+
+    - name: Check lab web endpoint
+      ansible.builtin.uri:
+        url: http://127.0.0.1:8088/
+        return_content: true
+        status_code: 200
+      register: web_response
+      until: web_response.status == 200
+      retries: 5
+      delay: 2
+
+    - name: Verify response content
+      ansible.builtin.assert:
+        that:
+          - "'Lab5 group13 - ' ~ inventory_hostname in web_response.content"
+
+    - name: Show HTTP response
+      ansible.builtin.debug:
+        var: web_response.content
+
+  handlers:
+    - name: Restart nginx
+      ansible.builtin.systemd_service:
+        name: nginx
+        state: restarted

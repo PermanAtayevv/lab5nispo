@@ -1,0 +1,31 @@
+
+PLAY [Configure lab5 nodes] ****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [lab5-worker]
+ok: [lab5-control-plane]
+
+TASK [Ensure required packages are installed] **********************************
+ok: [lab5-control-plane]
+ok: [lab5-worker]
+
+TASK [Create lab information file] *********************************************
+changed: [lab5-worker]
+changed: [lab5-control-plane]
+
+TASK [Check zsh version] *******************************************************
+ok: [lab5-worker]
+ok: [lab5-control-plane]
+
+TASK [Show zsh version] ********************************************************
+ok: [lab5-control-plane] => {
+    "zsh_version.stdout": "zsh 5.9 (x86_64-debian-linux-gnu)"
+}
+ok: [lab5-worker] => {
+    "zsh_version.stdout": "zsh 5.9 (x86_64-debian-linux-gnu)"
+}
+
+PLAY RECAP *********************************************************************
+lab5-control-plane         : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lab5-worker                : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,4 @@
+localhost | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}

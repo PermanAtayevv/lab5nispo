@@ -1,0 +1,34 @@
+
+PLAY [Configure web service on workers] ****************************************
+
+TASK [Install nginx] ***********************************************************
+ok: [lab5-worker]
+
+TASK [Configure lab web endpoint] **********************************************
+ok: [lab5-worker]
+
+TASK [Validate nginx configuration] ********************************************
+ok: [lab5-worker]
+
+TASK [Ensure nginx is running] *************************************************
+ok: [lab5-worker]
+
+TASK [Apply pending handlers before HTTP check] ********************************
+
+TASK [Check lab web endpoint] **************************************************
+ok: [lab5-worker]
+
+TASK [Verify response content] *************************************************
+ok: [lab5-worker] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Show HTTP response] ******************************************************
+ok: [lab5-worker] => {
+    "web_response.content": "Lab5 group13 - lab5-worker\n"
+}
+
+PLAY RECAP *********************************************************************
+lab5-worker                : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

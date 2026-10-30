@@ -1,0 +1,10 @@
+lab5-worker | SUCCESS => {
+    "cache_update_time": 1793398248,
+    "cache_updated": false,
+    "changed": false
+}
+lab5-control-plane | SUCCESS => {
+    "cache_update_time": 1793398245,
+    "cache_updated": false,
+    "changed": false
+}

@@ -1,0 +1,4 @@
+lab5-worker | CHANGED | rc=0 >>
+zsh 5.9 (x86_64-debian-linux-gnu)
+lab5-control-plane | CHANGED | rc=0 >>
+zsh 5.9 (x86_64-debian-linux-gnu)

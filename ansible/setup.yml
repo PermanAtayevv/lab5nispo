@@ -1,0 +1,36 @@
+---
+- name: Configure lab5 nodes
+  hosts: k8s
+  gather_facts: true
+
+  vars:
+    required_packages:
+      - zsh
+
+  tasks:
+    - name: Ensure required packages are installed
+      ansible.builtin.apt:
+        name: "{{ required_packages }}"
+        state: present
+
+    - name: Create lab information file
+      ansible.builtin.copy:
+        dest: /etc/lab5-info.txt
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          Laboratory: 5
+          Group: 13
+          Node: {{ inventory_hostname }}
+          OS: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}
+          Managed by: Ansible
+
+    - name: Check zsh version
+      ansible.builtin.command: zsh --version
+      register: zsh_version
+      changed_when: false
+
+    - name: Show zsh version
+      ansible.builtin.debug:
+        var: zsh_version.stdout

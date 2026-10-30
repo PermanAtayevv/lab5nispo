@@ -1,0 +1,9 @@
+ansible [core 2.21.5]
+  config file = None
+  configured module search path = ['/home/perma/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/perma/.local/share/pipx/venvs/ansible/lib/python3.12/site-packages/ansible
+  ansible collection location = /home/perma/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/perma/.local/bin/ansible
+  python version = 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0] (/home/perma/.local/share/pipx/venvs/ansible/bin/python)
+  jinja version = 3.1.6
+  pyyaml version = 6.0.3 (with libyaml v0.2.5)

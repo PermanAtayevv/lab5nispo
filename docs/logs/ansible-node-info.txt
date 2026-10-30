@@ -1,0 +1,12 @@
+lab5-control-plane | CHANGED | rc=0 >>
+Laboratory: 5
+Group: 13
+Node: lab5-control-plane
+OS: Debian 13.6
+Managed by: Ansible
+lab5-worker | CHANGED | rc=0 >>
+Laboratory: 5
+Group: 13
+Node: lab5-worker
+OS: Debian 13.6
+Managed by: Ansible
